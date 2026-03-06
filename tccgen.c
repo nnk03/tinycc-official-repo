@@ -7481,7 +7481,11 @@ again:
                     gexpr();
                     vpop();
                 }
-                skip(';');
+                // skip ';' if the compiler already knows there
+                // should be a ';'
+                if ( tok == ';' ) {
+                    skip(';');
+                }
             }
         }
     }
