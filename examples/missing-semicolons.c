@@ -4,8 +4,18 @@
 #include <stdlib.h>
 #include <tcclib.h>
 
+int add( int x, int y ) {
+    return x + y;
+}
+
 int main( int argc, char *argv[] ) {
    printf( "Hello World\n" )
+   printf( "Hello World\n" )
+   printf( "Hello World\n" )
+   printf( "Hello World\n" )
+   printf( "Hello World\n" )
+   printf( "%d\n", add( 6, 7 ) );
 
-       return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }
+
