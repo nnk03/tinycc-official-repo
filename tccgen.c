@@ -6144,11 +6144,15 @@ special_math_val:
         } else if (tok == '.' || tok == TOK_ARROW) {
             int qualifiers, cumofs;
             /* field */ 
-            if ( tok == '.' && ( (vtop->type.t & VT_BTYPE) == VT_PTR ) ) {
-               indir();
-            }
-            else if (tok == TOK_ARROW) 
+            if (tok == TOK_ARROW) 
                 indir();
+            else {
+               // tok is '.'
+               // deep dereference ( but does it work like rust ? )
+               while ( tok == '.' && ( (vtop->type.t & VT_BTYPE) == VT_PTR ) ) {
+                  indir();
+               }
+            }
             qualifiers = vtop->type.t & (VT_CONSTANT | VT_VOLATILE);
             test_lvalue();
             /* expect pointer on structure */
